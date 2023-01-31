@@ -1,11 +1,15 @@
-# Задайте список из нескольких чисел. Напишите программу, которая найдёт сумму элементов списка, стоящих
-# на позиции с нечетным индексом.
+# Напишите программу, которая найдёт произведение пар чисел списка. Парой считаем первый и последний
+# элемент, второй и предпоследний и т.д.
 # Пример:
-# [2, 3, 5, 9, 3] -> на нечётных позициях элементы 3 и 9, ответ:12
+# [2, 3, 4, 5, 6] => [12, 15, 16];
+# [2, 3, 5, 6] => [12, 15]
+import math
 
-myList = [2, 3, 5, 9, 3]
+testList = [2, 3, 4, 5, 6]
 
-sumElements = sum([n[1] if n[0] % 2 != 0 else 0 for n in enumerate(myList)])
+halfIndex = math.ceil(len(testList)/2)
 
-print(myList)
-print(sumElements)
+result = [n * m for n, m in zip(testList[:halfIndex],
+                              testList[:len(testList) - halfIndex - 1:-1])]
+print(testList)
+print(result)
